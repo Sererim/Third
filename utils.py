@@ -9,7 +9,7 @@ class Utils:
             "Enter the size of a list.",
             "Enter numbers.",
             "Enter a number.",
-            "Do you want to treminate a program Y/y ?."
+            "Do you want to treminate the program Y/y ?."
         ]
         
         return words[num]
