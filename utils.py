@@ -22,5 +22,6 @@ class Utils:
             control = input(Utils.message(4))
             if control == "Y" or control == 'y':
                 return True
-
+            else:
+                return False
     

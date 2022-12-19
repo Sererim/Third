@@ -1,73 +1,72 @@
 from utils import Utils
+from decimal import Decimal as decimal, getcontext as gtc
 
-
-class NumberFloat():
+class Homework:
     
     def __init__(self) -> None:
         
-        initial_list: list[float] = []
-        min_max_list: list[float]= []
-        answer: float = 0.0
+        gtc().prec = 2
+        initial_list: list[decimal] = []
+        new_list: list[decimal] = []
+        answer: decimal = decimal('0.0')
         
-        self.initial_list = initial_list
-        self.min_max_list = min_max_list
+        self.initial = initial_list
+        self.final = new_list
         self.answer = answer
-    
-    # Get initial_list.
-    def getlist(self) -> None:
         
+    def get_list(self) -> None:
         size: int = 0
-        foo: int = 0
+        foo: decimal = '0.0'
         size = int(input(f"{Utils.message(1)}"))
         
         print(f"{Utils.message(2)}")
         for i in range(0,size):
-            foo = float(input())
-            self.initial_list.append(foo)
+            foo = decimal(input())
+            self.initial.append(foo)
+            
+    def fraction_list(self) -> None:
+        for i in range(len(self.initial)):
+            self.initial[i] = (decimal(self.initial[i] - int(self.initial[i])))
     
-    # Search for min and max variable and make a new list out of them.
-    def search_min_max(self) -> None:
+    def search(self) -> None:
         
-        foo: float = 0.0
+        foo: decimal = decimal('0.0')
         bar: int = 0
         baz: int = 0
-        size: int = len(self.initial_list)
-        for i in range(size):
-            foo = self.initial_list.pop(i) 
-            for j in range(size - 1):
-                if foo < self.initial_list[j]:
+        size: int = len(self.initial)
+        
+        for i in range(0, size):
+            foo = self.initial.pop(i)
+            for j in range(0, size - 1):
+                if foo < self.initial[j]:
                     bar += 1
-                elif foo > self.initial_list[j]:
+                elif foo > self.initial[j]:
                     baz += 1
             if bar == size - 1:
-                self.min_max_list.append(foo)
+                self.final.append(foo)
             elif baz == size - 1:
-                self.min_max_list.append(foo)
+                self.final.append(foo)
             bar, baz = 0, 0
-            self.initial_list.append(foo)
-        
-    # Make a float part of the min number.
-    def min_float(self) -> None:
-        pass
+            self.initial.append(foo)
     
-    # Make a float part of the max number
-    def max_float(self) -> None:
-        pass
+    def get_answer(self) -> None:
+        self.answer = self.final[0] - self.final[1]
+        if self.answer < 0:
+            self.answer *= -1
     
-    def out_min_max(self) -> None:
-        pass
-    
-
 def main() -> int:
     while True:
-        min_max: object = NumberFloat()
-        min_max.getlist()
-        min_max.search_min_max()
-        print(min_max.min_max_list)
+        number: object = Homework()
+        number.get_list()
+        number.fraction_list()
+        number.search()
+        number.get_answer()
+        print(f"{number.answer}")
         if Utils.terminate():
             break
     return 0
 
 
 if __name__ == "__main__":
-    main()
+    main()        
+            
