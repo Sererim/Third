@@ -36,7 +36,7 @@ class Homework:
         size: int = len(self.initial)
         
         for i in range(0, size):
-            foo = self.initial.pop(i)
+            foo = self.initial.pop(0)
             for j in range(0, size - 1):
                 if foo < self.initial[j]:
                     bar += 1
