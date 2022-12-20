@@ -55,6 +55,7 @@ class Homework:
             self.answer *= -1
     
 def main() -> int:
+    print(f"{Utils.message(0)}")
     while True:
         number: object = Homework()
         number.get_list()
