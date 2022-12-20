@@ -9,7 +9,8 @@ class Utils:
             "Enter the size of a list.\n",
             "Enter numbers.\n",
             "Enter a number.\n",
-            "Do you want to treminate the program Y/y ?.\n"
+            "Do you want to treminate the program Y/y ?.\n",
+            "Error! Number must be positive!"
         ]
         
         return words[num] 
@@ -24,4 +25,11 @@ class Utils:
                 return True
             else:
                 return False
+    
+    @staticmethod
+    def ispositive(num: int) -> bool:
+        if num > 0:
+            return True
+        else:
+            return False
     
